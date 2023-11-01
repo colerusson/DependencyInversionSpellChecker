@@ -5084,6 +5084,7 @@ bazaar
 bazaars
 bazooka
 bazookas
+be
 beach
 beachcomber
 beachcombers
