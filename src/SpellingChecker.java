@@ -1,27 +1,32 @@
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
 
 public class SpellingChecker {
+    private final DocumentSource documentSource;
+    private final WordExtractorInterface extractor;
+    private final DictionaryInterface dictionary;
 
-	public SortedMap<String, Integer> check(URL url) throws IOException {
+    public SpellingChecker(DocumentSource documentSource, WordExtractorInterface extractor, DictionaryInterface dictionary) {
+        this.documentSource = documentSource;
+        this.extractor = extractor;
+        this.dictionary = dictionary;
+    }
+
+	public SortedMap<String, Integer> check(String url) throws IOException {
 
 		// download the document content
 		//
-		URLFetcher fetcher = new URLFetcher();
-		String content = fetcher.fetch(url);
+		String content = documentSource.getContent(url);
 
 		// extract words from the content
 		//
-		WordExtractor extractor = new WordExtractor();
 		List<String> words = extractor.extract(content);
 
 		// find spelling mistakes
 		//
-		Dictionary dictionary = new Dictionary("C:\\Users\\coler\\Documents\\BYU Fall 2023\\CS 340\\DependencyInversionSpellChecker\\src\\dict.txt");
 		SortedMap<String, Integer> mistakes = new TreeMap<>();
 
         for (String word : words) {

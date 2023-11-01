@@ -5,9 +5,8 @@ import java.util.Set;
 import java.util.TreeSet;
 
 
-public class Dictionary {
-
-	private Set<String> words;
+public class Dictionary implements DictionaryInterface {
+	private final Set<String> words;
 
 	public Dictionary(String fileName) throws IOException {
         try (Scanner scanner = new Scanner(new File(fileName))) {

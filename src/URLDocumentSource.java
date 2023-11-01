@@ -4,10 +4,11 @@ import java.net.URL;
 import java.net.URLConnection;
 
 
-public class URLFetcher {
+public class URLDocumentSource implements DocumentSource {
 
-	public String fetch(URL url) throws IOException {
+	public String getContent(String urlString) throws IOException {
 
+        URL url = new URL(urlString);
 		URLConnection connection = url.openConnection();
 		
 		StringBuilder contentBuffer = new StringBuilder();

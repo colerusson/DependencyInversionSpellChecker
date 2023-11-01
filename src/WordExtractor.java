@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 
-public class WordExtractor {
+public class WordExtractor implements WordExtractorInterface {
 
 	public List<String> extract(String content) {
 
